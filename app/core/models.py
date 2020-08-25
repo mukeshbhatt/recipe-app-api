@@ -2,7 +2,9 @@ from django.db import models
 
 # Create your models here.
 
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import PermissionsMixin
+
 
 class UserManager(BaseUserManager):
 
@@ -16,7 +18,7 @@ class UserManager(BaseUserManager):
         return user
 
 
-class User(AbstractBaseUser,PermissionsMixin):
+class User(AbstractBaseUser, PermissionsMixin):
     """custom user model use email insted of user_name"""
     email = models.EmailField(max_length=254, unique=True)
     name = models.CharField(max_length=255)
